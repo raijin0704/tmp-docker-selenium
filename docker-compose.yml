@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  chrome:
+    image: selenium/standalone-chrome:4.0.0-alpha-7-prerelease-20201009
+    container_name: chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - 4444:4444
+      - 5900:5900
+
+  python:
+    build:
+      context: ./
+      dockerfile: Dockerfile_python
+    container_name: 'python'
+    volumes:
+      - ./python_app/screenshots:/work/screenshots/
+    tty: true

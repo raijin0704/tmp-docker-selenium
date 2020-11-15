@@ -1,0 +1,11 @@
+FROM python:3
+
+# vimとseleniumをインストール
+RUN apt-get update && \
+  apt-get install -y vim && \
+  pip install selenium
+
+ENV TZ "Asia/Tokyo"
+
+WORKDIR /work/src
+COPY ./python_app/src/ /work/src
